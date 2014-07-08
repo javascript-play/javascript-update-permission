@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webscript>
+  <shortname>kosystems find and update permission</shortname>
+  <description></description>
+  <url>/kosystems/bupa/permission/update</url>
+  <format default="json"/>
+  <authentication runas="admin">none</authentication>
+  <transaction>required</transaction>        
+</webscript>
