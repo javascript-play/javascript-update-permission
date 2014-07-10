@@ -7,12 +7,12 @@
     * @param {Object} node - ScriptNode object.
     */
     function removeAllPermissions(ref) {
+
         //var roles = ["Coordinator", "Collaborator", "Contributor", "Editor", "Consumer"];
         var roles = ["Consumer", "Editor"];
         roles.forEach(function(role) {
             ref.removePermission(role);
         });
-        //ref.save();
     }
 
     var data = json.getJSONArray("data");
@@ -27,8 +27,11 @@
 
         if(node != undefined) {
 
+            var owner = node.getOwner();
+            node.takeOwnership();
+
             // remove all node permisson.
-            removeAllPermissions(node);
+            // removeAllPermissions(node);
 
             var permissions = item.getJSONArray("permissions");
             for (var i = 0; i < permissions.length(); i++) {
@@ -37,6 +40,8 @@
                 var permission = obj.get("permission");
                 node.setPermission(permission, "GROUP_" + group);
             }
+
+            node.setOwner(owner);
 
             // append new properties.
             item.put("properties", node.properties);

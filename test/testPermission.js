@@ -4,7 +4,7 @@ function createData() {
     var obj = {
         data: [
             {
-                uuid: "3e1f6685-1e7e-4577-9924-c6f9504379e1",
+                uuid: "f6461aed-4f46-446d-a950-5cb3e6fe9cc5",
                 permissions: [
                     {
                         group: "wk1",
@@ -12,12 +12,11 @@ function createData() {
                     },
                     {
                         group: "wk2",
-                        permission: "Consumer"
+                        permission: "Editor"
                     }
                 ]
-            },
-            {
-                uuid: "83ed57bd-cc47-4ff2-9f50-63d8868a4e1b",
+            },{
+                uuid: "1452e35c-eb43-43f5-9977-b3e1e0d02111",
                 permissions: [
                     {
                         group: "wk1",
@@ -25,7 +24,7 @@ function createData() {
                     },
                     {
                         group: "wk2",
-                        permission: "Consumer"
+                        permission: "Editor"
                     }
                 ]
             }
@@ -37,21 +36,23 @@ function createData() {
 
 exports.testSetPermission = function(test) {
 
+    var host = "192.168.0.115";
+    var path = "/ecm/service/kosystems/bupa/permission/update";
+
     var headers = {
         "Authorization": new Buffer("admin:admin").toString("base64"),
         "Content-Type": "application/json"
     };
 
     var options = {
-        host: "localhost",
+        host: host,
         method: "POST",
         port: 8080,
-        path: "/alfresco/service/kosystems/bupa/permission/update",
+        path: path,
         headers: headers
     };
 
     var request = http.request(options, function(response) {
-        console.log(response.statusCode);
 
         var datas = "";
         response.on("data", function(data){
@@ -62,6 +63,8 @@ exports.testSetPermission = function(test) {
             var obj = JSON.parse(datas);
             var tree = function(x) { return JSON.stringify(x, null, 4); };
             console.log(tree(obj));
+
+            if(response.statusCode == 500) test.fail();
             test.done();
         });
     });
