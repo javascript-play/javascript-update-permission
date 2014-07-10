@@ -4,7 +4,7 @@
 
     for(var j=0; j < data.length(); j++) {
         var item = data.getJSONObject(j);
-        item.put("success", "false");
+        item.put("success", false);
 
         var uuid = item.get("uuid");
         var node = search.findNode("workspace://SpacesStore/" + uuid)
@@ -17,9 +17,9 @@
                 var permission = obj.get("permission");
                 node.setPermission(permission, "GROUP_" + group);
             }
+            item.put("properties", node.properties);
+            item.put("success", true);
         }
-        item.put("properties", node.properties);
-        item.put("success", "true");
     }
 
     model.data = json;
