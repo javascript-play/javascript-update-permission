@@ -10,8 +10,8 @@
         var permissons = node.getDirectPermissions();
         for(var index in permissons) {
             var permission = permissons[index].split(";");
-            var role = permisson[2];
-            var user = permisson[1];
+            var role = permission[2];
+            var user = permission[1];
             node.removePermission(role, user);
         }
 
