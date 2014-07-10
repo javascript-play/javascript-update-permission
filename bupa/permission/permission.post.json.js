@@ -1,6 +1,11 @@
+/**
+* Self invoking literal.
+* This function depend on alfresco global object,
+* - json
+* - model
+* - search
+*/
 (function(json, model, search){
-
-    model.data = json;
 
     /**
     * Clear all node's permissons.
@@ -28,6 +33,8 @@
 
     for(var j=0; j < data.length(); j++) {
 
+        // read item at permisson j,
+        // and put default status success to 'false'
         var item = data.getJSONObject(j);
         item.put("success", false);
 
@@ -65,5 +72,7 @@
             item.put("date", new Date());
         }
     }
+
+    model.data = json;
 
 })(json, model, search);

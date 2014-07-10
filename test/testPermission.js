@@ -12,7 +12,7 @@ function createData() {
                     },
                     {
                         group: "wk2",
-                        permission: "Editor"
+                        permission: "Collaborator"
                     }
                 ]
             },{
