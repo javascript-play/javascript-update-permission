@@ -1,0 +1,23 @@
+{
+  "name": "bupa-permission-webscript",
+  "version": "0.0.0",
+  "description": "``` sh Url: http://localhost:8080/alfresco/service/kosystems/bupa/permission/update Method: POST Content-Type: application/json ```",
+  "main": "index.js",
+  "dependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-shell": "^0.7.0"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://192.168.0.112/bupa/bupa-permission-webscript.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
