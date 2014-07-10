@@ -4,27 +4,27 @@ function createData() {
     var obj = {
         data: [
             {
-                uuid: "0f968549-3553-4da2-b9d9-ac9e74fbddbe",
+                uuid: "3e1f6685-1e7e-4577-9924-c6f9504379e1",
                 permissions: [
                     {
-                        group: "g1",
+                        group: "wk1",
                         permission: "Editor"
                     },
                     {
-                        group: "g2",
+                        group: "wk2",
                         permission: "Consumer"
                     }
                 ]
             },
             {
-                uuid: "a75b4812-289b-4740-b77c-a9244998e79a",
+                uuid: "83ed57bd-cc47-4ff2-9f50-63d8868a4e1b",
                 permissions: [
                     {
-                        group: "g1",
+                        group: "wk1",
                         permission: "Editor"
                     },
                     {
-                        group: "g2",
+                        group: "wk2",
                         permission: "Consumer"
                     }
                 ]
@@ -51,9 +51,7 @@ exports.testSetPermission = function(test) {
     };
 
     var request = http.request(options, function(response) {
-        if(response.statusCode != 200) {
-            //test.fail();
-        }
+        console.log(response.statusCode);
 
         var datas = "";
         response.on("data", function(data){
