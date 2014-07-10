@@ -8,7 +8,7 @@ function createData() {
                 permissions: [
                     {
                         group: "wk1",
-                        permission: "Editor"
+                        permission: "Coordinator"
                     },
                     {
                         group: "wk2",

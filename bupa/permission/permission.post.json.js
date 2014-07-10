@@ -15,8 +15,8 @@
             node.removePermission(role, user);
         }
 
-        //var roles = ["Coordinator", "Collaborator", "Contributor", "Editor", "Consumer"];
         /*
+        var roles = ["Coordinator", "Collaborator", "Contributor", "Editor", "Consumer"];
         var roles = ["Editor"];
         roles.forEach(function(role) {
             ref.removePermission(role);
@@ -36,12 +36,15 @@
 
         if(node != undefined) {
 
+            // keep current owner.
+            // take owner by current user.
+            // remove all previous permissions.
             var owner = node.getOwner();
             node.takeOwnership();
-
-            // remove all node permisson.
             removeAllPermissions(node);
 
+            // real new permission from json object,
+            // then update role and permission.
             var permissions = item.getJSONArray("permissions");
             for (var i = 0; i < permissions.length(); i++) {
                 var obj = permissions.getJSONObject(i);
@@ -50,9 +53,13 @@
                 node.setPermission(permission, "GROUP_" + group);
             }
 
+            // recovery owner.
             node.setOwner(owner);
 
-            // append new properties.
+            // append new properties,
+            // properties: addition node properties.
+            // success: update status.
+            // date: operation date.
             item.put("properties", node.properties);
             item.put("success", true);
             item.put("date", new Date());
