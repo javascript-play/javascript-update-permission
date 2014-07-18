@@ -33,7 +33,7 @@
 
     for(var j=0; j < data.length(); j++) {
 
-        // read item at permisson j,
+        // read item at index j,
         // and put default status success to 'false'
         var item = data.getJSONObject(j);
         item.put("success", false);
@@ -43,15 +43,15 @@
 
         if(node != undefined) {
 
-            // keep current owner.
-            // take owner by current user.
+            // keep owner reference.
+            // take ownership by current user.
             // remove all previous permissions.
             var owner = node.getOwner();
             node.takeOwnership();
             removeAllPermissions(node);
 
-            // real new permission from json object,
-            // then update role and permission.
+            // read new permission from json object,
+            // update role and permission.
             var permissions = item.getJSONArray("permissions");
             for (var i = 0; i < permissions.length(); i++) {
                 var obj = permissions.getJSONObject(i);
