@@ -51,14 +51,19 @@
                     var permission = obj.get("permission");
                     node.setPermission(permission, "GROUP_" + group);
                 }
-                setInherit(node, false);
-
+                //setInherit(node, false);
             }else {
-                setInherit(node, true);
+                //setInherit(node, true);
             }
 
             // recovery owner.
             node.setOwner(owner);
+
+            if(permissions.length() > 0) {
+                setInherit(node, false);
+            }else {
+                setInherit(node, true);
+            }
 
             // append new properties,
             // properties: addition node properties.
