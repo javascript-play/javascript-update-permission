@@ -9,7 +9,7 @@ module.exports = function(grunt) {
         },
         shell: {
             copy: {
-                command: "cp -r bupa $WEBSCRIPT"
+                command: "cp -r bupa $ALFRESCO/$WEBSCRIPT"
             },
             reload: {
                 command: 'curl -uadmin:admin --data "reset=on" http://localhost:8080/alfresco/service/'
@@ -20,5 +20,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-watch");
     grunt.loadNpmTasks("grunt-shell");
     grunt.registerTask("default", ["watch"]);
+    grunt.registerTask("d", ["shell:copy", "shell:reload"]);
 };
 
